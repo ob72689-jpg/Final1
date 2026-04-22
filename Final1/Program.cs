@@ -6,12 +6,20 @@ var builder = WebApplication.CreateBuilder(args);
 #region Database Configure
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDBContext>(options =>
-options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
 #endregion
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApiDocument(config =>
+{
+    config.Title = "MyInfo API";
+    config.Version = "version 1";
+    config.Description = "API for managing MyInfo and RedsPlayers";
+});
 
 var app = builder.Build();
 

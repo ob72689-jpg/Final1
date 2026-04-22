@@ -1,6 +1,6 @@
 ﻿namespace Final1.Models
 {
-    public class FavoriteRed
+    public class FavoriteReds
     {
         public int Id { get; set; }
         public string? Name { get; set; }

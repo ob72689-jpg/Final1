@@ -10,7 +10,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 #endregion
 
-// Add services to the container.
+// Add services to the contaioner (Swagger)
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -22,6 +22,10 @@ builder.Services.AddOpenApiDocument(config =>
 });
 
 var app = builder.Build();
+
+//middleware to view swagger docs
+app.UseOpenApi();
+app.UseSwaggerUi();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
